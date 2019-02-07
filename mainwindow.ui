@@ -46,7 +46,7 @@
       <widget class="QLabel" name="lblCount">
        <property name="geometry">
         <rect>
-         <x>400</x>
+         <x>410</x>
          <y>20</y>
          <width>51</width>
          <height>31</height>
@@ -65,8 +65,8 @@
       <widget class="QLabel" name="lblEscribiendo">
        <property name="geometry">
         <rect>
-         <x>10</x>
-         <y>160</y>
+         <x>190</x>
+         <y>170</y>
          <width>231</width>
          <height>31</height>
         </rect>
@@ -101,8 +101,8 @@
       <widget class="QLabel" name="lblms">
        <property name="geometry">
         <rect>
-         <x>280</x>
-         <y>50</y>
+         <x>10</x>
+         <y>60</y>
          <width>131</width>
          <height>31</height>
         </rect>
@@ -137,8 +137,8 @@
       <widget class="QLabel" name="lblminslider_3">
        <property name="geometry">
         <rect>
-         <x>420</x>
-         <y>170</y>
+         <x>150</x>
+         <y>180</y>
          <width>31</width>
          <height>21</height>
         </rect>
@@ -156,7 +156,7 @@
         <number>0</number>
        </property>
        <property name="text">
-        <string>10</string>
+        <string>20</string>
        </property>
        <property name="textFormat">
         <enum>Qt::PlainText</enum>
@@ -171,8 +171,8 @@
       <widget class="QLabel" name="lblminslider_4">
        <property name="geometry">
         <rect>
-         <x>280</x>
-         <y>170</y>
+         <x>10</x>
+         <y>180</y>
          <width>21</width>
          <height>21</height>
         </rect>
@@ -228,8 +228,8 @@
       <widget class="QLabel" name="lblLeyendo">
        <property name="geometry">
         <rect>
-         <x>10</x>
-         <y>80</y>
+         <x>190</x>
+         <y>90</y>
          <width>231</width>
          <height>31</height>
         </rect>
@@ -264,8 +264,8 @@
       <widget class="QLabel" name="lblminslider_2">
        <property name="geometry">
         <rect>
-         <x>420</x>
-         <y>90</y>
+         <x>150</x>
+         <y>100</y>
          <width>31</width>
          <height>21</height>
         </rect>
@@ -283,7 +283,7 @@
         <number>0</number>
        </property>
        <property name="text">
-        <string>10</string>
+        <string>20</string>
        </property>
        <property name="textFormat">
         <enum>Qt::PlainText</enum>
@@ -298,8 +298,8 @@
       <widget class="QSlider" name="slEscritores">
        <property name="geometry">
         <rect>
-         <x>300</x>
-         <y>170</y>
+         <x>30</x>
+         <y>180</y>
          <width>121</width>
          <height>22</height>
         </rect>
@@ -308,7 +308,7 @@
         <number>0</number>
        </property>
        <property name="maximum">
-        <number>10</number>
+        <number>20</number>
        </property>
        <property name="singleStep">
         <number>1</number>
@@ -326,14 +326,14 @@
         <enum>Qt::Horizontal</enum>
        </property>
        <property name="tickInterval">
-        <number>20</number>
+        <number>1</number>
        </property>
       </widget>
       <widget class="QLabel" name="lblHilo02_velocidad">
        <property name="geometry">
         <rect>
-         <x>400</x>
-         <y>130</y>
+         <x>130</x>
+         <y>140</y>
          <width>51</width>
          <height>31</height>
         </rect>
@@ -374,8 +374,8 @@
       <widget class="QProgressBar" name="pbHilo02">
        <property name="geometry">
         <rect>
-         <x>10</x>
-         <y>160</y>
+         <x>190</x>
+         <y>170</y>
          <width>261</width>
          <height>31</height>
         </rect>
@@ -390,8 +390,8 @@
       <widget class="QLabel" name="lblms_2">
        <property name="geometry">
         <rect>
-         <x>280</x>
-         <y>130</y>
+         <x>10</x>
+         <y>140</y>
          <width>141</width>
          <height>31</height>
         </rect>
@@ -426,8 +426,8 @@
       <widget class="QSlider" name="slLectores">
        <property name="geometry">
         <rect>
-         <x>300</x>
-         <y>90</y>
+         <x>30</x>
+         <y>100</y>
          <width>121</width>
          <height>22</height>
         </rect>
@@ -436,7 +436,7 @@
         <number>0</number>
        </property>
        <property name="maximum">
-        <number>10</number>
+        <number>20</number>
        </property>
        <property name="singleStep">
         <number>1</number>
@@ -454,14 +454,14 @@
         <enum>Qt::Horizontal</enum>
        </property>
        <property name="tickInterval">
-        <number>20</number>
+        <number>1</number>
        </property>
       </widget>
       <widget class="QProgressBar" name="pbHilo01">
        <property name="geometry">
         <rect>
-         <x>10</x>
-         <y>82</y>
+         <x>190</x>
+         <y>92</y>
          <width>261</width>
          <height>31</height>
         </rect>
@@ -476,8 +476,8 @@
       <widget class="QLabel" name="lblminslider">
        <property name="geometry">
         <rect>
-         <x>280</x>
-         <y>90</y>
+         <x>10</x>
+         <y>100</y>
          <width>21</width>
          <height>21</height>
         </rect>
@@ -510,8 +510,8 @@
       <widget class="QLabel" name="lblHilo01_velocidad">
        <property name="geometry">
         <rect>
-         <x>400</x>
-         <y>50</y>
+         <x>130</x>
+         <y>60</y>
          <width>51</width>
          <height>31</height>
         </rect>

@@ -1,6 +1,7 @@
 #include <QMessageBox>
 #include <QThread>
 #include <QString>
+#include <QDir>
 
 #include "mainwindow.h"
 #include "hilo_ui.h"
@@ -67,9 +68,6 @@ MainWindow::MainWindow(QWidget *parent)
     ui.pbHilo02->setValue(cont_b);
 
 
-
-    ui.tblMarcas->setHorizontalHeaderLabels( {"ID", "MARCA"} );
-
     /*
     abrirCSV();
     appendCSV(101, "prueba");
@@ -93,11 +91,18 @@ int MainWindow::appendCSV(int id, QString marca){
 }
 
 int MainWindow::abrirCSV(){
+    QString path = QDir::currentPath();
+
     QFile file("./assets/datos.csv");
        if (!file.open(QIODevice::ReadOnly)) {
            qDebug() << file.errorString();
            return 1;
        }
+
+
+       ui.tblMarcas->setRowCount(0);
+       ui.tblMarcas->clear();
+       ui.tblMarcas->setHorizontalHeaderLabels( {"ID", "MARCA"} );
 
        QStringList wordList;
        int fila = 0;
@@ -147,7 +152,7 @@ void MainWindow::updateCount(int cnt, int hilo)
 
     if(cont_a >= 100){
         workerA->enEspera(true);
-        workerA->velocidad( (rand() %100)+50);
+        workerA->velocidad( (rand() %60)+30);
         vel_a = 0;
         current_lectores = 0;
         ui.slLectores->setValue(vel_a);
@@ -159,7 +164,7 @@ void MainWindow::updateCount(int cnt, int hilo)
         workerB->enEspera(true);
         lastId++;
         appendCSV(lastId, "Marca-"+QString::number(lastId));
-        workerB->velocidad( (rand() %100)+50);
+        workerB->velocidad( (rand() %60)+10);
         ui.lblEscribiendo->setText(QString::number(0)+ " esta escribiendo ...");
         //vel_b = vel_b -1;
         //ui.slEscritores->setValue(vel_b);
@@ -195,8 +200,17 @@ void MainWindow::reiniciaEscritor(){
 
 void MainWindow::updateInfiniteCount(int cnt)
 {
-    ui.lblCount->setText(QString::number(cnt));
+    ui.lblCount->setText(QString::number(cnt)+" seg.");
     //ui.pbHilo01->setValue(cont_a);
+
+    if((rand() %100) > 75){
+        vel_a = ui.slLectores->value() + (rand() %5);
+        ui.slLectores->setValue(vel_a);
+    }
+    if((rand() %100) > 85){
+        vel_b = ui.slEscritores->value() + (rand() %3);
+        ui.slEscritores->setValue(vel_b);
+    }
 
 
 
@@ -335,7 +349,7 @@ void MainWindow::connectSignalsSlots()
 void MainWindow::on_btnRandom_clicked()
 {
 
-    vel_a = rand() %10;
+    vel_a = rand() %12;
     ui.slLectores->setValue(vel_a);
 
     vel_b = rand() %10;
@@ -348,10 +362,10 @@ void MainWindow::on_btnRandom_clicked()
 
 void MainWindow::actualizaVelocidadHilo(){
     if(workerA){
-        workerA->velocidad((rand() %100)+50);
+        workerA->velocidad((rand() %80)+30);
     }
     if(workerB){
-        workerB->velocidad((rand() %100)+50);
+        workerB->velocidad((rand() %60)+10);
     }
 }
 
