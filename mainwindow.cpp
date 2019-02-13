@@ -35,13 +35,15 @@ int cont_c= 0;
 int cont_d= 0;
 
 int current_lectores= 0;
-//int cont_lectores= 0;
-//int cont_escritores= 0;
 
 int lastId= 0;
 
 HiloABCD *workerA;
 HiloABCD *workerB;
+QList<int> listLectores;
+QList<int> listLectoresEsperando;
+QList<int> listEscritoresEsperando;
+QString currentEscritor = "N/A";
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent),
@@ -49,6 +51,9 @@ MainWindow::MainWindow(QWidget *parent)
       countRunning(false)
 {
     ui.setupUi(this);
+
+    this->setWindowTitle("lectores-escritores");
+
     ui.lblLeyendo->setStyleSheet("QLabel { color : blue; }");
     ui.lblEscribiendo->setStyleSheet("QLabel { color : red; }");
 
@@ -67,12 +72,6 @@ MainWindow::MainWindow(QWidget *parent)
     ui.slEscritores->setValue(vel_b);
     ui.pbHilo02->setValue(cont_b);
 
-
-    /*
-    abrirCSV();
-    appendCSV(101, "prueba");
-
-    */
 
     connectSignalsSlots();
 }
@@ -134,7 +133,9 @@ int MainWindow::abrirCSV(){
 
        //qDebug() << wordList;
 
+       ui.tblMarcas->selectRow(ui.tblMarcas->rowCount()-1);
        ui.tblMarcas->scrollToBottom();
+
 }
 
 void MainWindow::updateCount(int cnt, int hilo)
@@ -152,11 +153,19 @@ void MainWindow::updateCount(int cnt, int hilo)
 
     if(cont_a >= 100){
         workerA->enEspera(true);
-        workerA->velocidad( (rand() %60)+30);
+        workerA->velocidad( (rand() %10)+20);
         vel_a = 0;
         current_lectores = 0;
         ui.slLectores->setValue(vel_a);
         ui.lblLeyendo->setText(QString::number(0)+ " estan leyendo ...");
+
+
+            if(listLectores.size() > 0){
+                listLectores.clear();
+            }
+
+        formaHtml("Lectores terminaron de leer... ");
+
         reiniciaLector();
     }
 
@@ -164,8 +173,12 @@ void MainWindow::updateCount(int cnt, int hilo)
         workerB->enEspera(true);
         lastId++;
         appendCSV(lastId, "Marca-"+QString::number(lastId));
-        workerB->velocidad( (rand() %60)+10);
+        workerB->velocidad( (rand() %20)+10);
         ui.lblEscribiendo->setText(QString::number(0)+ " esta escribiendo ...");
+
+        currentEscritor = "N/A";
+        formaHtml("El escritor terminò de escribir el registro #"+QString::number(lastId)+"... ");
+
         //vel_b = vel_b -1;
         //ui.slEscritores->setValue(vel_b);
         reiniciaEscritor();
@@ -174,14 +187,31 @@ void MainWindow::updateCount(int cnt, int hilo)
 }
 
 void MainWindow::reinicia(){
+
+
     cont_a= 0;
     ui.pbHilo01->setValue(cont_a);
 
     cont_b= 0;
     ui.pbHilo02->setValue(cont_b);
 
+
+
     ui.lblLeyendo->setText(QString::number(0)+ " estan leyendo ...");
     ui.lblEscribiendo->setText(QString::number(0)+ " esta escribiendo ...");
+
+    currentEscritor = "N/A";
+    listLectores.clear();
+    listLectoresEsperando.clear();
+    listEscritoresEsperando.clear();
+
+    vel_a = 0;
+    ui.slLectores->setValue(vel_a);
+
+    vel_b = 0;
+    ui.slEscritores->setValue(vel_b);
+
+    formaHtml("Iniciando...");
 
     abrirCSV();
 }
@@ -201,14 +231,36 @@ void MainWindow::reiniciaEscritor(){
 void MainWindow::updateInfiniteCount(int cnt)
 {
     ui.lblCount->setText(QString::number(cnt)+" seg.");
-    //ui.pbHilo01->setValue(cont_a);
 
     if((rand() %100) > 75){
-        vel_a = ui.slLectores->value() + (rand() %5);
+
+        int lectoresNuevos = (rand() %5);
+        int idLector = -1;
+
+        for (int var = 0; var < lectoresNuevos; ++var) {
+           idLector = (rand() %500);
+
+           listLectoresEsperando.append(idLector);
+           formaHtml("Llegaron "+QString::number(lectoresNuevos)+" lectores...");
+        }
+
+
+        vel_a = ui.slLectores->value() + (lectoresNuevos);
         ui.slLectores->setValue(vel_a);
     }
-    if((rand() %100) > 85){
-        vel_b = ui.slEscritores->value() + (rand() %3);
+    if((rand() %100) > 85 and vel_b < 10){
+
+        int escritoresNuevos = (rand() %3);
+        int idEscritor = -1;
+
+        for (int var = 0; var < escritoresNuevos; ++var) {
+           idEscritor = (rand() %500);
+
+           listEscritoresEsperando.append(idEscritor);
+           formaHtml("Llegaron "+QString::number(escritoresNuevos)+" escritores...");
+        }
+
+        vel_b = ui.slEscritores->value() + (escritoresNuevos);
         ui.slEscritores->setValue(vel_b);
     }
 
@@ -219,14 +271,33 @@ void MainWindow::updateInfiniteCount(int cnt)
             workerA->enEspera(false);
             workerB->enEspera(true);
             current_lectores = current_lectores + ui.slLectores->value();
-            ui.lblLeyendo->setText(QString::number(current_lectores)+ " estan leyendo ...");
+            ui.lblLeyendo->setText(QString::number(current_lectores)+ " leyendo "+"[Marca #"+QString::number(lastId)+"]");
+
+            for (int var = 0; var < ui.slLectores->value(); ++var) {
+                if(listLectoresEsperando.size() > 0){
+                    listLectores.append(listLectoresEsperando.first());
+                    listLectoresEsperando.removeFirst();
+                }
+            }
+
+            formaHtml("");
+
+
             vel_a = 0;
             ui.slLectores->setValue(vel_a);
      }
      else if(workerB->isEsperando() && workerA->isEsperando() && ui.slEscritores->value() > 0 && ui.slLectores->value() <= 0 ){
         workerB->enEspera(false);
         workerA->enEspera(true);
-        ui.lblEscribiendo->setText(QString::number(1)+ " esta escribiendo ...");
+        ui.lblEscribiendo->setText(QString::number(1)+ " esta escribiendo ...");       
+
+        currentEscritor = "Escritor ("+QString::number(listEscritoresEsperando.first())+")";
+        if(listEscritoresEsperando.size() > 0){
+            listEscritoresEsperando.removeFirst();
+        }
+
+        formaHtml("");
+
         vel_b = vel_b -1;
         ui.slEscritores->setValue(vel_b);
 
@@ -309,21 +380,6 @@ void MainWindow::startInfiniteCount()
 
     infiniteCountRunning = true;
 
-    /*
-    pthread_t referencia;
-
-    printf("Iniciando el proceso\n");
-
-    struct arg_struct args;
-       args.hilo = 1;
-       args.vel = 100;
-       args.mw = this;
-       args.pb = this->ui.pbHilo01;
-
-    pthread_create(&referencia, NULL, ejecutaSegundoPlano, (void *) &args);
-    pthread_join(referencia,NULL);
-
-    */
 }
 
 void MainWindow::countFinished()
@@ -346,26 +402,13 @@ void MainWindow::connectSignalsSlots()
     connect(ui.btnStart, SIGNAL(clicked()), this, SLOT(startCount()));
 }
 
-void MainWindow::on_btnRandom_clicked()
-{
-
-    vel_a = rand() %12;
-    ui.slLectores->setValue(vel_a);
-
-    vel_b = rand() %10;
-    ui.slEscritores->setValue(vel_b);
-
-
-    actualizaVelocidadHilo();
-
-}
 
 void MainWindow::actualizaVelocidadHilo(){
     if(workerA){
-        workerA->velocidad((rand() %80)+30);
+        workerA->velocidad((rand() %50)+20);
     }
     if(workerB){
-        workerB->velocidad((rand() %60)+10);
+        workerB->velocidad((rand() %40)+10);
     }
 }
 
@@ -374,13 +417,63 @@ void MainWindow::on_slLectores_valueChanged(int value)
 {
     vel_a = value;
     ui.lblHilo01_velocidad->setText(QString::number(value));
-    //actualizaVelocidadHilo();
 }
 
 void MainWindow::on_slEscritores_valueChanged(int value)
 {
     vel_b = value;
     ui.lblHilo02_velocidad->setText(QString::number(value));
-    //actualizaVelocidadHilo();
+}
+
+void MainWindow::formaHtml(QString mensaje){
+    QString html = "<h3 style=\"color: #2e6c80;\">Log</h3>\n"
+                   "<hr>\n"
+                    "<h5 style=\"color: #54455c;\">Lectores en Espera ("+QString::number(listLectoresEsperando.size())+"):</h5>\n"
+                    "<ul style=\"list-style-type: square; color: #2f285e;\">\n";
+
+    for(int lector : listLectoresEsperando){
+        html = html +
+            "<li>Lector ("+QString::number(lector)+")</li>\n";
+    }
+
+    html = html + "</ul>\n"
+                  "<h5 style=\"color: #54455c;\">Escritores en Espera ("+QString::number(listEscritoresEsperando.size())+"):</h5>\n"
+                  "<ul style=\"list-style-type: square; color: #2f285e;\">\n";
+
+    for(int escritor : listEscritoresEsperando){
+        html = html +
+            "<li>Escritor ("+QString::number(escritor)+")</li>\n";
+    }
+
+
+
+    html = html +
+        "</ul>\n"
+        "<hr>\n"
+        "<h4 style=\"color: #085076;\">Leyendo ("+QString::number(listLectores.size())+"):</h5>\n"
+        "<ul style=\"list-style-type: square; color: #2f285e;\">\n"
+            ;
+
+    for(int lector : listLectores){
+        html = html +
+            "<li>Lector ("+QString::number(lector)+") [Marca #"+QString::number(lastId)+"]</li>\n";
+    }
+
+    html = html +
+        "</ul>\n"
+        "<h4 style=\"color: #085076;\">Escribiendo:</h5>\n"
+        "<ul style=\"list-style-type: square; color: #2f285e;\">\n"
+        "<li>"+currentEscritor+"</li>\n"
+        "</ul>\n"
+        ;
+
+
+    html = html +
+            "<hr>\n"
+            "<h6 style=\"color: #54455c;\">"+mensaje+"</h6>\n";
+
+    ui.txtLog->setHtml(html);
+
+
 }
 

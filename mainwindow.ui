@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>481</width>
+    <width>531</width>
     <height>670</height>
    </rect>
   </property>
@@ -23,7 +23,7 @@
       <widget class="QPushButton" name="btnStop">
        <property name="geometry">
         <rect>
-         <x>400</x>
+         <x>450</x>
          <y>600</y>
          <width>51</width>
          <height>41</height>
@@ -46,10 +46,10 @@
       <widget class="QLabel" name="lblCount">
        <property name="geometry">
         <rect>
-         <x>410</x>
-         <y>20</y>
-         <width>51</width>
-         <height>31</height>
+         <x>460</x>
+         <y>10</y>
+         <width>41</width>
+         <height>16</height>
         </rect>
        </property>
        <property name="layoutDirection">
@@ -59,15 +59,15 @@
         <string>0</string>
        </property>
        <property name="alignment">
-        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
        </property>
       </widget>
       <widget class="QLabel" name="lblEscribiendo">
        <property name="geometry">
         <rect>
-         <x>190</x>
+         <x>60</x>
          <y>170</y>
-         <width>231</width>
+         <width>201</width>
          <height>31</height>
         </rect>
        </property>
@@ -134,80 +134,12 @@
         <number>5</number>
        </property>
       </widget>
-      <widget class="QLabel" name="lblminslider_3">
-       <property name="geometry">
-        <rect>
-         <x>150</x>
-         <y>180</y>
-         <width>31</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="layoutDirection">
-        <enum>Qt::LeftToRight</enum>
-       </property>
-       <property name="frameShape">
-        <enum>QFrame::NoFrame</enum>
-       </property>
-       <property name="frameShadow">
-        <enum>QFrame::Raised</enum>
-       </property>
-       <property name="midLineWidth">
-        <number>0</number>
-       </property>
-       <property name="text">
-        <string>20</string>
-       </property>
-       <property name="textFormat">
-        <enum>Qt::PlainText</enum>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-       </property>
-       <property name="margin">
-        <number>5</number>
-       </property>
-      </widget>
-      <widget class="QLabel" name="lblminslider_4">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>180</y>
-         <width>21</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="layoutDirection">
-        <enum>Qt::LeftToRight</enum>
-       </property>
-       <property name="frameShape">
-        <enum>QFrame::NoFrame</enum>
-       </property>
-       <property name="frameShadow">
-        <enum>QFrame::Raised</enum>
-       </property>
-       <property name="midLineWidth">
-        <number>0</number>
-       </property>
-       <property name="text">
-        <string>0</string>
-       </property>
-       <property name="textFormat">
-        <enum>Qt::PlainText</enum>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-       </property>
-       <property name="margin">
-        <number>5</number>
-       </property>
-      </widget>
       <widget class="QPushButton" name="btnStart">
        <property name="geometry">
         <rect>
          <x>280</x>
          <y>600</y>
-         <width>111</width>
+         <width>161</width>
          <height>41</height>
         </rect>
        </property>
@@ -228,9 +160,9 @@
       <widget class="QLabel" name="lblLeyendo">
        <property name="geometry">
         <rect>
-         <x>190</x>
-         <y>90</y>
-         <width>231</width>
+         <x>60</x>
+         <y>88</y>
+         <width>201</width>
          <height>31</height>
         </rect>
        </property>
@@ -259,74 +191,6 @@
        </property>
        <property name="margin">
         <number>5</number>
-       </property>
-      </widget>
-      <widget class="QLabel" name="lblminslider_2">
-       <property name="geometry">
-        <rect>
-         <x>150</x>
-         <y>100</y>
-         <width>31</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="layoutDirection">
-        <enum>Qt::LeftToRight</enum>
-       </property>
-       <property name="frameShape">
-        <enum>QFrame::NoFrame</enum>
-       </property>
-       <property name="frameShadow">
-        <enum>QFrame::Raised</enum>
-       </property>
-       <property name="midLineWidth">
-        <number>0</number>
-       </property>
-       <property name="text">
-        <string>20</string>
-       </property>
-       <property name="textFormat">
-        <enum>Qt::PlainText</enum>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-       </property>
-       <property name="margin">
-        <number>5</number>
-       </property>
-      </widget>
-      <widget class="QSlider" name="slEscritores">
-       <property name="geometry">
-        <rect>
-         <x>30</x>
-         <y>180</y>
-         <width>121</width>
-         <height>22</height>
-        </rect>
-       </property>
-       <property name="minimum">
-        <number>0</number>
-       </property>
-       <property name="maximum">
-        <number>20</number>
-       </property>
-       <property name="singleStep">
-        <number>1</number>
-       </property>
-       <property name="pageStep">
-        <number>1</number>
-       </property>
-       <property name="value">
-        <number>0</number>
-       </property>
-       <property name="tracking">
-        <bool>true</bool>
-       </property>
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="tickInterval">
-        <number>1</number>
        </property>
       </widget>
       <widget class="QLabel" name="lblHilo02_velocidad">
@@ -374,9 +238,9 @@
       <widget class="QProgressBar" name="pbHilo02">
        <property name="geometry">
         <rect>
-         <x>190</x>
+         <x>60</x>
          <y>170</y>
-         <width>261</width>
+         <width>201</width>
          <height>31</height>
         </rect>
        </property>
@@ -423,46 +287,12 @@
         <number>5</number>
        </property>
       </widget>
-      <widget class="QSlider" name="slLectores">
-       <property name="geometry">
-        <rect>
-         <x>30</x>
-         <y>100</y>
-         <width>121</width>
-         <height>22</height>
-        </rect>
-       </property>
-       <property name="minimum">
-        <number>0</number>
-       </property>
-       <property name="maximum">
-        <number>20</number>
-       </property>
-       <property name="singleStep">
-        <number>1</number>
-       </property>
-       <property name="pageStep">
-        <number>1</number>
-       </property>
-       <property name="value">
-        <number>0</number>
-       </property>
-       <property name="tracking">
-        <bool>true</bool>
-       </property>
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="tickInterval">
-        <number>1</number>
-       </property>
-      </widget>
       <widget class="QProgressBar" name="pbHilo01">
        <property name="geometry">
         <rect>
-         <x>190</x>
-         <y>92</y>
-         <width>261</width>
+         <x>60</x>
+         <y>90</y>
+         <width>201</width>
          <height>31</height>
         </rect>
        </property>
@@ -471,40 +301,6 @@
        </property>
        <property name="format">
         <string/>
-       </property>
-      </widget>
-      <widget class="QLabel" name="lblminslider">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>100</y>
-         <width>21</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="layoutDirection">
-        <enum>Qt::LeftToRight</enum>
-       </property>
-       <property name="frameShape">
-        <enum>QFrame::NoFrame</enum>
-       </property>
-       <property name="frameShadow">
-        <enum>QFrame::Raised</enum>
-       </property>
-       <property name="midLineWidth">
-        <number>0</number>
-       </property>
-       <property name="text">
-        <string>0</string>
-       </property>
-       <property name="textFormat">
-        <enum>Qt::PlainText</enum>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-       </property>
-       <property name="margin">
-        <number>5</number>
        </property>
       </widget>
       <widget class="QLabel" name="lblHilo01_velocidad">
@@ -549,26 +345,6 @@
         <number>5</number>
        </property>
       </widget>
-      <widget class="QPushButton" name="btnRandom">
-       <property name="geometry">
-        <rect>
-         <x>280</x>
-         <y>570</y>
-         <width>171</width>
-         <height>23</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Valores Aleatorios</string>
-       </property>
-       <property name="icon">
-        <iconset>
-         <normaloff>assets/random.png</normaloff>assets/random.png</iconset>
-       </property>
-       <property name="checkable">
-        <bool>false</bool>
-       </property>
-      </widget>
       <widget class="QLabel" name="label">
        <property name="geometry">
         <rect>
@@ -591,10 +367,10 @@
       <widget class="QLabel" name="lblTiempoTranscurrido">
        <property name="geometry">
         <rect>
-         <x>350</x>
-         <y>0</y>
-         <width>111</width>
-         <height>31</height>
+         <x>330</x>
+         <y>10</y>
+         <width>121</width>
+         <height>16</height>
         </rect>
        </property>
        <property name="font">
@@ -647,28 +423,73 @@
         <string>Libro Marcas de Carros</string>
        </property>
       </widget>
+      <widget class="QTextEdit" name="txtLog">
+       <property name="geometry">
+        <rect>
+         <x>280</x>
+         <y>30</y>
+         <width>221</width>
+         <height>561</height>
+        </rect>
+       </property>
+       <property name="html">
+        <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Log&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+      </widget>
+      <widget class="QSpinBox" name="slLectores">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>90</y>
+         <width>42</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="maximum">
+        <number>20</number>
+       </property>
+      </widget>
+      <widget class="QSpinBox" name="slEscritores">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>170</y>
+         <width>41</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="maximum">
+        <number>20</number>
+       </property>
+      </widget>
       <zorder>pbHilo01</zorder>
       <zorder>pbHilo02</zorder>
       <zorder>btnStop</zorder>
       <zorder>lblCount</zorder>
       <zorder>lblEscribiendo</zorder>
       <zorder>lblms</zorder>
-      <zorder>lblminslider_3</zorder>
-      <zorder>lblminslider_4</zorder>
       <zorder>btnStart</zorder>
       <zorder>lblLeyendo</zorder>
-      <zorder>lblminslider_2</zorder>
-      <zorder>slEscritores</zorder>
       <zorder>lblHilo02_velocidad</zorder>
       <zorder>lblms_2</zorder>
-      <zorder>slLectores</zorder>
-      <zorder>lblminslider</zorder>
       <zorder>lblHilo01_velocidad</zorder>
-      <zorder>btnRandom</zorder>
       <zorder>label</zorder>
       <zorder>lblTiempoTranscurrido</zorder>
       <zorder>tblMarcas</zorder>
       <zorder>label_2</zorder>
+      <zorder>txtLog</zorder>
+      <zorder>slLectores</zorder>
+      <zorder>slEscritores</zorder>
      </widget>
     </item>
    </layout>

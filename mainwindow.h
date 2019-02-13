@@ -25,7 +25,7 @@ private slots:
         void countFinished();
         void infiniteCountFinished();
 
-        void on_btnRandom_clicked();
+        void formaHtml(QString);
 
         void on_slLectores_valueChanged(int value);
 
